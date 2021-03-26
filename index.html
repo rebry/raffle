@@ -5,13 +5,144 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+  <title>RaffleApp</title>
 </head>
 
 <body>
   <main>
-    <h1>Vanilla JavaScript App</h1>
+    <button id="go">Pick a winner</button><button id="reset">Reset</button><br>
+    <div id="names"></div>
   </main>
 </body>
+  <script>
+    var names = {
+    "Kelsey Gentry": 10,
+    "Diana Sun": 15,
+    "Pearl Aldridge": 22,
+    "Kevin Holt": 12,
+    "Jenny Wilson": 4,
+    "Amanda Roos": 4,
+    "kelbelne@gmail.com": 6,
+    "Bryant Timmons": 7,
+    "Chelsie Faulk": 6,
+    "Alyssa Shirley": 5,
+    "Brittany Phelps": 4,
+    "Michelle Cheung": 4,
+    "Dexter Nye": 4,
+    "Britta Grubham": 4,
+    "Bria Harris": 5,
+    "Andy Chapman": 4,
+    "Ashley Roush": 4,
+    "Matt Goodwin": 4,
+    "Claire Goodwin": 4,
+    "Henry Taylor": 4,
+    "Danny Ritter": 4,
+    "Nichole Vance": 4,
+    "Andrew Winder": 4,
+    "John van den Berghe": 4,
+    "Blake Moss": 4,
+    "Hannah Grigg": 4,
+    "Mason Bennett": 4,
+    "Leigh Bergin": 4,
+    "Jessica Pukahi": 4,
+    "Kristine Barlow": 4,
+    "Johnathan Hald": 5,
+    "Beau Stringer": 4,
+    "Kelly": 8,
+    "Kolby Larsen": 1,
+    "Taylor Hill": 1,
+    "Nathan Daniels": 1,
+    "Sam Herrera": 1,
+    "Andrew Martin": 1,
+    "Brittany Coon": 1,
+    "Scott Baylon": 1,
+    "Mark Wahl": 1,
+    "Shauna Hadaway": 1,
+    "Anita Hung": 1,
+    "Sarah Decker": 1,
+    "Marcus Reynolds": 1,
+    "Ellie Ott": 1,
+    "Kevin Johnson": 1,
+    "Jamison Fox": 1,
+    "Kevin Thompson": 1,
+    "Sophie Roberts": 1,
+    "Ethan Davis": 1,
+    "Jonathan Ying": 1,
+    "Bri Price": 1,
+    "Trevor Smart": 1,
+    "Hannah Berlin": 1,
+    "Jonathan Southern": 1,
+    "Ashton Omdaw": 1,
+    "Felipe Messias": 1,
+    "Andrew Carliss": 1,
+    "Ben Amundsen": 1,
+    "Brette Williamson": 1,
+    "Evan Roberts": 1,
+    "Andrea Roberts": 1,
+    "Caitlyn Costley": 1,
+    "Marissa Pack": 1,
+    "Jason Secrest": 1,
+    "Derik Krauss": 1,
+    "Jenny Orr": 1,
+    "Kelsie Klingler": 1,
+    "Joy Shau": 1,
+    "Cameron Smith": 1,
+    "Shannon West": 1,
+    "Evan Hilton": 1,
+    "Rebecca Albrechsten": 1,
+    "Rose Hage": 1,
+    "Savannah Rea": 1,
+    "Haley Rasmussen": 1,
+    "Nick Ritter": 1,
+    "Keltson Howell": 1,
+    "Catherine Summers": 1,
+    "Keller Johnson": 1,
+    "Mckay Daines": 1,
+    "Katelyn Christensen": 1,
+    "Julius Billeter": 1,
+    "Garet Aller": 1,
+    "Derek Stewart": 1
+};
+
+function reset() {
+    clearTimeout(tid);
+    $('#names').empty();
+    _.each(names, function(count, name) {
+        for (var i = 0; i < count; i++) {
+            var nameDiv = $('<div class="name alive"/>').text(name);
+            
+            if (i == 0) $('#names').append(nameDiv);
+            else {
+                var nameDivs = $('#names .name'),
+                    index = ~~(Math.random() * nameDivs.length);
+    
+                nameDivs.eq(index)[~~(Math.random() * 2) ? 'before' : 'after'](nameDiv);
+            }
+        }
+    });
+}
+
+var tid;
+function pickWinner() {
+    clearTimeout(tid);
+
+    var num = $('.alive').length,
+        i = ~~(Math.random() * num--);
+    
+    $('.alive').eq(i).removeClass('alive').animate({opacity: '0', transform: 'scale(1.5)'});
+    
+    if (num > 1) tid = setTimeout(arguments.callee, 10000/Math.pow(num, 1.1));
+    else {
+        $('.alive').animate({
+            fontSize: '54px'
+        }, 2000);
+    }
+}
+        
+$('#go').click(pickWinner);
+$('#reset').click(reset);
+
+reset();
+  </script>
 
 </html>
