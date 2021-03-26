@@ -9,7 +9,7 @@ var names = {
     "Karolina": 5,
     "Carl": 5,
     "David": 3,
-    "Jarle": 1,
+    "Jarle": 1
 };
 
 function reset() {
@@ -49,5 +49,6 @@ function pickWinner() {
         
 $('#go').click(pickWinner);
 $('#reset').click(reset);
+alert('hello');
 
 reset();
