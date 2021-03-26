@@ -8,6 +8,19 @@ html, body {
   padding: 0;
   background-color: #fff;
 }
+#names {
+    text-align: center;
+    width: 100%;
+}
+
+.name {
+    padding: 4px 12px;
+    font-size: 32px;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    font-weight: bold;
+}
 
 main {
   margin: auto;
