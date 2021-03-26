@@ -15,7 +15,7 @@ var names = {
 function reset() {
     clearTimeout(tid);
     $('#names').empty();
-    _.each(names, function(count, name) {
+    $.each(names, function(count, name) {
         for (var i = 0; i < count; i++) {
             var nameDiv = $('<div class="name alive"/>').text(name);
             
