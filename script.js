@@ -49,6 +49,5 @@ function pickWinner() {
         
 $('#go').click(pickWinner);
 $('#reset').click(reset);
-alert('hello');
 
 reset();
